@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#botao1").click(function () {
+                $("#div1").load("http://hawkman.fabricadesoftware.ifc.edu.br/~rafael/lojinha/ajax/categorias.php");
+            });
+            $("#botao2").click(function () {
+                $.get("http://hawkman.fabricadesoftware.ifc.edu.br/~rafael/lojinha/ajax/categorias.php", function (conteudoRetornado){
+                    $("#div1").html(conteudoRetornado);
+                    
+                });
+            });
+            $("#botao3").click(function(){
+                $.get("http://hawkman.fabricadesoftware.ifc.edu.br/~rafael/lojinha/ajax/produtos.php?categoria=1",{
+                    categoria: $("input").val()
+                },
+                function (dados) {
+                    $("div").html(dados);
+
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <h1>Exercícios</h1>
+    <button id="botao1">Botão1</button>
+    <button id="botao2">Botão2</button>
+    <button id="botao3">Botão3</button>
+    <div id="div1"></div>
+    <input>
+</body>
+</html>
